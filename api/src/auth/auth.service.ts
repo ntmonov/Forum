@@ -21,7 +21,7 @@ export class AuthService {
     try {
       const user = this.userRepo.create(credentials);
       await user.save();
-      return { message: 'User created. Check your email for activation' };
+      return { message: 'User created.' };
     } catch (err) {
       if (err.code === 'ER_DUP_ENTRY') {
         throw new ConflictException('Username allready taken');
@@ -34,7 +34,9 @@ export class AuthService {
     try {
       const user = await this.userRepo.findOne({ where: { username } });
       const isValid = await user.comparePassword(password);
-
+      if (!isValid) {
+        throw new Error();
+      }
       const payload = { username: user.username, isAdmin: user.isAdmin };
       const token = this.jwtService.sign(payload);
 

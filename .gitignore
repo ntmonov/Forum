@@ -1,2 +1,4 @@
 /api/node_modules
 /api/dist
+/forum/node_modules
+/forum/e2e
