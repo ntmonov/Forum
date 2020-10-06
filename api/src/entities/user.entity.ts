@@ -1,13 +1,13 @@
 import { AbstractEntity } from './abstract-entity';
 import { Entity, Column, BeforeInsert } from 'typeorm';
 import { Exclude, classToPlain } from 'class-transformer';
-import { IsEmail, IsBoolean, IsString } from 'class-validator';
+import { IsBoolean, MinLength } from 'class-validator';
 import * as bcrypt from 'bcryptjs';
-import { v4 } from 'uuid';
 
 @Entity('users')
 export class UserEntity extends AbstractEntity {
   @Column({ unique: true })
+  @MinLength(4)
   username: string;
 
   @Column({ default: null, nullable: true })

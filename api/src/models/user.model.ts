@@ -2,6 +2,7 @@ import { IsString, MinLength, IsBoolean } from 'class-validator';
 
 export class LoginDTO {
   @IsString()
+  @MinLength(4)
   username: string;
 
   @IsString()
