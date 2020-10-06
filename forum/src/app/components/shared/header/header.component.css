@@ -1,0 +1,9 @@
+.dropdown a:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+img {
+  width: 64px;
+  border-radius: 50%;
+}
