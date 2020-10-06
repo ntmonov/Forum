@@ -1,5 +1,8 @@
 export interface User {
-  username: string;
-  password: string;
-  image: string;
+  user: {
+    username: string;
+    password: string;
+    image: string;
+    token: string;
+  };
 }

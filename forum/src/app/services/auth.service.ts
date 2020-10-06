@@ -7,7 +7,17 @@ import { User } from '../models/user.model';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  signup(credentials: User): Observable<User> {
-    return this.http.post<User>('http://localhost:3000/api/users', credentials);
+  signup(credentials): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(
+      'http://localhost:3000/api/users',
+      credentials
+    );
+  }
+
+  signin(credentials): Observable<User> {
+    return this.http.post<User>(
+      'http://localhost:3000/api/users/login',
+      credentials
+    );
   }
 }

@@ -40,7 +40,10 @@ export class AuthService {
       const payload = { username: user.username, isAdmin: user.isAdmin };
       const token = this.jwtService.sign(payload);
 
-      return { user: { ...user.toJSON(), token } };
+      return {
+        user: { ...user.toJSON(), token },
+        message: 'Successfully logged in',
+      };
     } catch (err) {
       throw new UnauthorizedException('Invalid credentials');
     }

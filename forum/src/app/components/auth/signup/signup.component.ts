@@ -5,7 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -53,14 +52,14 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    const credentials: User = {
+    const credentials = {
       username: this.username.value,
       image: this.image.value,
       password: this.password.value,
     };
     this.authService.signup(credentials).subscribe(
-      (data) => console.log(data),
-      (err) => console.log(err)
+      (data) => {},
+      (err) => {}
     );
   }
 }
