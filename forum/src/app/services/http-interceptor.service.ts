@@ -8,6 +8,13 @@ export class HttpInterceptor implements HttpInterceptor {
   constructor(private toastr: ToastrService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    req = req.clone({
+      setHeaders: {
+        Authorization: 'Token ' + localStorage.getItem('token') || null,
+        'Content-Type': 'application/json',
+      },
+    });
+
     return next.handle(req).pipe(
       tap(
         (event) => {

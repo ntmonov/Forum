@@ -17,11 +17,8 @@
   </a>
 
   <div class="dropdown">
-    <span class="text-white mr-1">Welcome niki</span>
-    <img
-      src="https://avatars0.githubusercontent.com/u/35723033?v=4"
-      class="mr-1"
-    />
+    <span *ngIf="username" class="text-white mr-1">Welcome {{ username }}</span>
+    <img [src]="image" class="mr-1" *ngIf="username" />
     <button
       class="btn btn-secondary dropdown-toggle"
       type="button"
@@ -85,7 +82,7 @@
         </svg>
         SignIn
       </a>
-      <a class="navbar-brand dropdown-item" href="/signin">
+      <a class="navbar-brand dropdown-item" (click)="logout()">
         <svg
           width="1.5em"
           height="1.5em"

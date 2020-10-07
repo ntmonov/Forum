@@ -20,4 +20,20 @@ export class AuthService {
       credentials
     );
   }
+
+  getIsAdmin(): boolean {
+    if (localStorage.getItem('token') === null) return false;
+    let jwtData = localStorage.getItem('token').split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+    return decodedJwtData.isAdmin;
+  }
+
+  getUsername(): string {
+    if (localStorage.getItem('token') === null) return '';
+    let jwtData = localStorage.getItem('token').split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+    return decodedJwtData.username;
+  }
 }
